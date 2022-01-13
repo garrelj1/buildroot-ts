@@ -103,6 +103,9 @@ untar_image() {
 		parted -a optimal "${DST_DEV}" mkpart primary ext4 4MiB 100% || err_exit "mkpart ${DST_DEV}"
 
 		case "${FILESYSTEM}" in
+			"ext2")
+				CMD="mkfs.ext2"
+				;;
 			"ext3")
 				CMD="mkfs.ext3"
 				;;
